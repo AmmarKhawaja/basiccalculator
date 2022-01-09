@@ -1,80 +1,54 @@
-var totalNumber = 0
-var currentNumber = 0
-var start = true
+var numbers = ["0"]
 var storedOperand = " "
 const display = document.querySelector("#display")
 const text = document.createElement("h1")
 text.classList.add("text")
-text.textContent = currentNumber
 display.appendChild(text)
 
+const addButton = document.querySelector("#addButton")
+const subButton = document.querySelector("#subButton")
+const mulButton = document.querySelector("#mulButton")
+const divButton = document.querySelector("#divButton")
+function resetButtonColors() {
+
+}
 function selectNumber(num) {
-    if (start == true) {
-        totalNumber = num
-        start = false
+    if (numbers.length == 1) {
+        numbers.push(num)
     }else {
-        if (currentNumber == 0) {
-            currentNumber = num
-        }else {
-            var a = currentNumber.toString()
-            var b = num.toString()
-            var c = a + b
-            currentNumber = parseInt(c)
-            num = currentNumber
-        }
+        a = num.toString()
+        b = numbers[numbers.length - 1]
+        c = b + a
+        num = c
+        numbers[numbers.length - 1] = num
     }
-    //     var a = currentNumber.toString()
-    //     var b = num.toString()
-    //     var c = a + b
-    //     currentNumber = parseInt(c)
-    //     num = currentNumber
-    // if (currentNumber == 0 && totalNumber == 0) {
-    //     totalNumber = num
-    // }
-    // if (currentNumber == 0 && totalNumber != 0) {
-    //     currentNumber = num
-    // }
-    // else {
-    //     var a = currentNumber.toString()
-    //     var b = num.toString()
-    //     var c = a + b
-    //     currentNumber = parseInt(c)
-    //     num = currentNumber
-    // }
-    
-    // if (totalNumber == 0) {
-    //     totalNumber = num
-    // }else if (currentNumber != 0) {
-    //     alert("aaa")
-    //     a = currentNumber.toString()
-    //     b = num.toString()
-    //     c = a + b
-    //     currentNumber = c.toInt()
-    //     num = currentNumber
-    // }else {
-    //     currentNumber = num
-    // }
+    console.log(numbers)
     text.textContent = num
     display.appendChild(text)
 }
 function selectOperand(op) {
     if (op == "equ") {
         if (storedOperand == "add") {
-            totalNumber = totalNumber + currentNumber
+            numbers.push((parseInt(numbers[numbers.length - 2]) + parseInt(numbers[numbers.length - 1])).toString())
         }
         else if (storedOperand == "sub") {
-            totalNumber = totalNumber - currentNumber
+            numbers.push((parseInt(numbers[numbers.length - 2]) - parseInt(numbers[numbers.length - 1])).toString())
         }
         else if (storedOperand == "mul") {
-            totalNumber = totalNumber * currentNumber
+            numbers.push((parseInt(numbers[numbers.length - 2]) * parseInt(numbers[numbers.length - 1])).toString())
         }
         else if (storedOperand == "div") {
-            totalNumber = totalNumber / currentNumber
+            numbers.push((parseInt(numbers[numbers.length - 2]) / parseInt(numbers[numbers.length - 1])).toString())
         }
-        alert(totalNumber)
-        currentNumber = 0
+        console.log(numbers)
+        text.textContent = numbers[numbers.length - 1]
+        display.appendChild(text)
         storedOperand = " "
     }else {
         storedOperand = op
+        numbers.push(" ")
     }
+    
+    console.log(numbers)
+
 }
