@@ -22,24 +22,36 @@ function selectNumber(num) {
         num = c
         numbers[numbers.length - 1] = num
     }
+    if (storedOperand == "add") {
+        numbers.push((parseInt(numbers[numbers.length - 2]) + parseInt(numbers[numbers.length - 1])).toString())
+    }
+    else if (storedOperand == "sub") {
+        numbers.push((parseInt(numbers[numbers.length - 2]) - parseInt(numbers[numbers.length - 1])).toString())
+    }
+    else if (storedOperand == "mul") {
+        numbers.push((parseInt(numbers[numbers.length - 2]) * parseInt(numbers[numbers.length - 1])).toString())
+    }
+    else if (storedOperand == "div") {
+        numbers.push((parseInt(numbers[numbers.length - 2]) / parseInt(numbers[numbers.length - 1])).toString())
+    }
     console.log(numbers)
     text.textContent = num
     display.appendChild(text)
 }
 function selectOperand(op) {
     if (op == "equ") {
-        if (storedOperand == "add") {
-            numbers.push((parseInt(numbers[numbers.length - 2]) + parseInt(numbers[numbers.length - 1])).toString())
-        }
-        else if (storedOperand == "sub") {
-            numbers.push((parseInt(numbers[numbers.length - 2]) - parseInt(numbers[numbers.length - 1])).toString())
-        }
-        else if (storedOperand == "mul") {
-            numbers.push((parseInt(numbers[numbers.length - 2]) * parseInt(numbers[numbers.length - 1])).toString())
-        }
-        else if (storedOperand == "div") {
-            numbers.push((parseInt(numbers[numbers.length - 2]) / parseInt(numbers[numbers.length - 1])).toString())
-        }
+        // if (storedOperand == "add") {
+        //     numbers.push((parseInt(numbers[numbers.length - 2]) + parseInt(numbers[numbers.length - 1])).toString())
+        // }
+        // else if (storedOperand == "sub") {
+        //     numbers.push((parseInt(numbers[numbers.length - 2]) - parseInt(numbers[numbers.length - 1])).toString())
+        // }
+        // else if (storedOperand == "mul") {
+        //     numbers.push((parseInt(numbers[numbers.length - 2]) * parseInt(numbers[numbers.length - 1])).toString())
+        // }
+        // else if (storedOperand == "div") {
+        //     numbers.push((parseInt(numbers[numbers.length - 2]) / parseInt(numbers[numbers.length - 1])).toString())
+        // }
         console.log(numbers)
         text.textContent = numbers[numbers.length - 1]
         display.appendChild(text)
