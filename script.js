@@ -62,5 +62,10 @@ function selectOperand(op) {
     }
     
     console.log(numbers)
+}
 
+function clearNum() {
+    numbers = ["0"]
+    text.textContent = numbers[numbers.length - 1]
+    display.appendChild(text)
 }
